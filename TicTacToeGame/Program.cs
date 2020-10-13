@@ -10,7 +10,7 @@ namespace TicTacToeGame
             char[] board = game.createBoard();
             game.choosePlayerLetter();
             game.showBoard(board);
-            game.userMove();
+            game.userMove(board);
         }
     }
 }
