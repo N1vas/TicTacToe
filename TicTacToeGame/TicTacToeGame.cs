@@ -6,6 +6,7 @@ namespace TicTacToeGame
 {
     class TicTacToeGame
     {
+        char playerLetter, compLetter;
         public char[] createBoard()
         {
             char[] board = new char[10];
@@ -18,8 +19,8 @@ namespace TicTacToeGame
         public char choosePlayerLetter()
         {
             Console.WriteLine("Choose either X or O");
-            char playerLetter = char.ToUpper(Console.ReadLine()[0]);
-            char compLetter;
+            playerLetter = char.ToUpper(Console.ReadLine()[0]);
+            //char compLetter;
 
             if (playerLetter.Equals('X') || playerLetter.Equals('O'))
             {
@@ -54,7 +55,8 @@ namespace TicTacToeGame
             if (move < 10 && move > 0 && board[move] ==' ')
             {
                 Console.WriteLine("Your Move is Valid");
-                board[move] = 'X';
+                board[move] = playerLetter;
+                showBoard(board);
             }
             else
             {
