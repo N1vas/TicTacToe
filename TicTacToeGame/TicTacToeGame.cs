@@ -36,9 +36,15 @@ namespace TicTacToeGame
                 Console.WriteLine("Please,Choose either X or O");
                 choosePlayerLetter();
             }
-           
-            
             return playerLetter;
+        }
+        public void showBoard(char[] board)
+        {
+            Console.WriteLine(board[1] + " | " + board[2] + " | " + board[3]);
+            Console.WriteLine("---------");
+            Console.WriteLine(board[4] + " | " + board[5] + " | " + board[6]);
+            Console.WriteLine("---------");
+            Console.WriteLine(board[7] + " | " + board[8] + " | " + board[9]);
         }
     }
 }
