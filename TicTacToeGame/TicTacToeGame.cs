@@ -56,7 +56,12 @@ namespace TicTacToeGame
             {
                 Console.WriteLine("Your Move is Valid");
                 freeBoard[move] = 1;
-                
+
+            }
+            else
+            {
+                Console.WriteLine("Your Move is Not Valid ");
+                userMove();
             }
         }
     }
