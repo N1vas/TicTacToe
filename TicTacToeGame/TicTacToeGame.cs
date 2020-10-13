@@ -14,10 +14,31 @@ namespace TicTacToeGame
             }
             return board;
         }
-        public void choosePlayerLetter()
+        public char choosePlayerLetter()
         {
             Console.WriteLine("Choose either X or O");
-            string playerLetter = Console.ReadLine();
+            char playerLetter = char.ToUpper(Console.ReadLine()[0]);
+            char compLetter;
+
+            if (playerLetter.Equals('X') || playerLetter.Equals('O'))
+            {
+                if (playerLetter.Equals('X'))
+                {
+                    compLetter = 'O';
+                }
+                else if (playerLetter.Equals('O'))
+                {
+                    compLetter = 'X';
+                }
+            }
+            else
+            {
+                Console.WriteLine("Please,Choose either X or O");
+                choosePlayerLetter();
+            }
+           
+            
+            return playerLetter;
         }
     }
 }
