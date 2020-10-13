@@ -14,5 +14,10 @@ namespace TicTacToeGame
             }
             return board;
         }
+        public void choosePlayerLetter()
+        {
+            Console.WriteLine("Choose either X or O");
+            string playerLetter = Console.ReadLine();
+        }
     }
 }
