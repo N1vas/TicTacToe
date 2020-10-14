@@ -57,6 +57,10 @@ namespace TicTacToeGame
                 Console.WriteLine("Your Move is Valid");
                 board[move] = playerLetter;
                 showBoard(board);
+                if (isWinner(board, playerLetter))
+                    Console.WriteLine("Player Won");
+                else
+                    Console.WriteLine("Its Computers Turn now");
             }
             else
             {
@@ -76,6 +80,19 @@ namespace TicTacToeGame
             {
                 Console.WriteLine("Computer will play first");
             }
+        }
+        public bool isWinner(char[] b, char c)
+        {
+            return (
+                (b[1] == c && b[2] == c && b[3] == c) ||
+                (b[4] == c && b[5] == c && b[6] == c) ||
+                (b[7] == c && b[8] == c && b[9] == c) ||
+                (b[7] == c && b[4] == c && b[1] == c) ||
+                (b[8] == c && b[5] == c && b[2] == c) ||
+                (b[9] == c && b[6] == c && b[3] == c) ||
+                (b[1] == c && b[5] == c && b[9] == c) ||
+                (b[7] == c && b[5] == c && b[3] == c) 
+                    );
         }
     }
 }
