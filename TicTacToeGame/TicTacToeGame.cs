@@ -138,10 +138,12 @@ namespace TicTacToeGame
             {
                 return winningMove;
             }
-            else
+            int userWinningMove = GetWinningMove(b, playerLetter);
+            if (userWinningMove != 0)
             {
-                return 0;
+                return userWinningMove;
             }
+            return 0;
         }
     }
 }
