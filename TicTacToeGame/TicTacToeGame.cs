@@ -143,6 +143,24 @@ namespace TicTacToeGame
             {
                 return userWinningMove;
             }
+            int[] cornerMoves = { 1, 3, 7, 9 };
+            int computerMove = getRandomMoveFromList(b,cornerMoves);
+            if (computerMove != 0)
+            {
+                return computerMove;
+            }
+            return 0;
+        }
+        public int getRandomMoveFromList(char[] board, int[] moves)
+        {
+            for (int i=0;i<moves.Length;i++)
+            {
+                int num = moves[i];
+                if (board[num] == ' ')
+                {
+                    return num;
+                }
+            }
             return 0;
         }
     }
