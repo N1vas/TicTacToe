@@ -24,14 +24,8 @@ namespace TicTacToeGame
             playerLetter = char.ToUpper(Console.ReadLine()[0]);
             if (playerLetter.Equals('X') || playerLetter.Equals('O'))
             {
-                if (playerLetter.Equals('X'))
-                {
-                    compLetter = 'O';
-                }
-                else if (playerLetter.Equals('O'))
-                {
-                    compLetter = 'X';
-                }
+                Console.WriteLine("You have choosed"+playerLetter);
+                
             }
             else
             {
@@ -39,6 +33,19 @@ namespace TicTacToeGame
                 choosePlayerLetter();
             }
             return playerLetter;
+            
+        }
+        public char computerLetter()
+        {
+            if (playerLetter.Equals('X'))
+            {
+                compLetter = 'O';
+            }
+            else 
+            {
+                compLetter = 'X';
+            }
+            return compLetter;
         }
         public void showBoard(char[] board)
         {
@@ -93,6 +100,48 @@ namespace TicTacToeGame
                 (b[1] == c && b[5] == c && b[9] == c) ||
                 (b[7] == c && b[5] == c && b[3] == c) 
                     );
+        }
+        public void makeMove(char[] b, int position, char letter) 
+        {
+            if (b[position] == ' ') 
+            {
+                b[position] = letter;
+            }
+        }
+        public char[] getCopyOfBoard(char[] c)
+        {
+            char[] boardCopy = new char[10];
+            Array.Copy(c, 0,boardCopy,0,boardCopy.Length);
+            return boardCopy;
+        }
+        public int GetWinningMove(char[] b, char c)
+        {
+            for (int i = 1; i <b.Length; i++)
+            {
+                char[] copyBoard = getCopyOfBoard(b);
+                if (copyBoard[i]==' ')
+                {
+                    makeMove(b, i, c);
+                    if (isWinner(copyBoard,c))
+                    {
+                        return i;
+                        
+                    }
+                }                
+            }
+            return 0;
+        }
+        public int getComputerMove(char[] b, char computerLetter)
+        {
+            int winningMove = GetWinningMove(b, computerLetter);
+            if (winningMove != 0)
+            {
+                return winningMove;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }
