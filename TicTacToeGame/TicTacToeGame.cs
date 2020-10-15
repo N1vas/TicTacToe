@@ -149,6 +149,16 @@ namespace TicTacToeGame
             {
                 return computerMove;
             }
+            if (b[5]==' ') 
+            {
+                return 5;
+            }
+            int[] sideMove = { 2,4,6,8};
+            computerMove = getRandomMoveFromList(b, sideMove);
+            if (computerMove != 0)
+            {
+                return computerMove;
+            }
             return 0;
         }
         public int getRandomMoveFromList(char[] board, int[] moves)
