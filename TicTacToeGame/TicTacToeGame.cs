@@ -64,10 +64,6 @@ namespace TicTacToeGame
                 Console.WriteLine("Your Move is Valid");
                 board[move] = playerLetter;
                 showBoard(board);
-                if (isWinner(board, playerLetter))
-                    Console.WriteLine("Player Won");
-                else
-                    Console.WriteLine("Its Computers Turn now");
             }
             else
             {
@@ -75,18 +71,27 @@ namespace TicTacToeGame
                 userMove(board);
             }
         }
-        public void toss()
+        public void compMove(char[] board,int pos)
         {
+            board[pos] = compLetter;
+            showBoard(board);
+        }
+        public char toss()
+        {
+            char playingOne;
             Random random = new Random();
             int tossWon = random.Next(0,2);
             if (tossWon == HEAD)
             {
                 Console.WriteLine("User will play first");
+                playingOne = playerLetter;
             }
             else
             {
                 Console.WriteLine("Computer will play first");
+                playingOne = compLetter;
             }
+            return playingOne;
         }
         public bool isWinner(char[] b, char c)
         {
@@ -121,7 +126,7 @@ namespace TicTacToeGame
                 char[] copyBoard = getCopyOfBoard(b);
                 if (copyBoard[i]==' ')
                 {
-                    makeMove(b, i, c);
+                    makeMove(copyBoard, i, c);
                     if (isWinner(copyBoard,c))
                     {
                         return i;
@@ -172,6 +177,14 @@ namespace TicTacToeGame
                 }
             }
             return 0;
+        }
+        public bool noSpacesLeft(char[] board)
+        {
+            return (
+                board[1] != ' ' && board[2] != ' ' && board[3] != ' ' && 
+                board[4] != ' ' && board[5] != ' ' && board[6] != ' ' &&
+                board[7] != ' ' && board[8] != ' ' && board[9] != ' ' 
+                );
         }
     }
 }
